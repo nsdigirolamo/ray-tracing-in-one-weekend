@@ -20,8 +20,10 @@ LIBS = -lm
 ray-tracer: $(OBJS)
 	$(CC) -o ray-tracer $(OBJS) $(LIBS)
 
-$(ODIR)/%.o: $(SDIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ 
+$(ODIR)/%.o: $(SDIR)/%.c | $(ODIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(ODIR): mkdir -p $@ 
 
 .PHONY: clean
 
