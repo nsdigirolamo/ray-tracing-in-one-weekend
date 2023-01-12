@@ -23,7 +23,8 @@ ray-tracer: $(OBJS)
 $(ODIR)/%.o: $(SDIR)/%.c | $(ODIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(ODIR): mkdir -p $@ 
+$(ODIR): 
+	mkdir -p $@ 
 
 .PHONY: clean
 
