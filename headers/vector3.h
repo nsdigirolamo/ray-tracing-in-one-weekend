@@ -27,7 +27,8 @@ double magSquared (vector3 v);
 vector3 normal (vector3 v);
 double dot (vector3 v1, vector3 v2);
 vector3 cross (vector3 v1, vector3 v2);
-vector3 reflect(vector3 v, vector3 normal);
+vector3 reflect (vector3 v, vector3 normal);
+vector3 refract (vector3 v, vector3 normal, double refraction_index);
 
 vector3 randVector (double min, double max);
 
