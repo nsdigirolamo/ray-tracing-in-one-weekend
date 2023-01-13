@@ -9,3 +9,4 @@ raytracing, and getting more comfortable on the command line.
 ![An image of a sphere with diffusion.](https://i.imgur.com/mTFym81.png)
 ![An image of multiple colored spheres with diffusion.](https://i.imgur.com/YT7XtXP.png)
 ![An image of multiple colored spheres with diffusion and reflection.](https://i.imgur.com/GKoVSVC.png)
+![An image of multiple colored spheres. The sphere on the left is made of glass](https://imgur.com/a/iNGFCtI)
