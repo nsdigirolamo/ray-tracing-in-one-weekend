@@ -18,9 +18,10 @@ struct hit {
     point3 point;
     vector3 normal;
     material mat;
+    bool front_face;
 } typedef hit;
 
-hit Hit (double t, point3 point, vector3 normal, material mat);
+void setFaceNormal (hit *h, ray r, vector3 outward_normal);
 
 void scatter (ray r, hit h, color *attenuation, ray *scattered);
 

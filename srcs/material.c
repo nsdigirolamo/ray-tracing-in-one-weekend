@@ -8,10 +8,12 @@
 
 #include <stdbool.h>
 
-material Material (color albedo, bool isReflective, double reflectivity) {
+material Material (color albedo, bool isReflective, double reflectivity, bool isRefractive, double refractionIndex) {
     material m;
     m.albedo = albedo;
     m.isReflective = isReflective;
     m.reflectivity = reflectivity;
+    m.isRefractive = isRefractive;
+    m.refractionIndex = refractionIndex;
     return m;
 }

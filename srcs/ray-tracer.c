@@ -79,21 +79,22 @@ int main () {
 
     // Spheres
 
-    material m1 = Material(Color(0.7, 0.3, 0.3), false, 0.0);
+    material m1 = Material(Color(0.1, 0.2, 0.5), false, 0.0, false, 1.5);
     sphere center = Sphere(Point3(0.0, 0.0, -1.0), 0.5, m1);
 
-    material m2 = Material(Color(0.8, 0.8, 0.0), false, 0.0);
+    material m2 = Material(Color(0.8, 0.8, 0.0), false, 0.0, false, 0.0);
     sphere ground = Sphere(Point3(0.0, -100.5, -1.0), 100, m2);
 
-    material m3 = Material(Color(0.8, 0.8, 0.8), true, 0.3);
-    sphere left = Sphere(Point3(-1.0, 0.0, -1.0), 0.5, m3);
+    material m3 = Material(Color(0.8, 0.8, 0.8), false, 0.0, true, 1.5);
+    sphere left1 = Sphere(Point3(-1.0, 0.0, -1.0), 0.5, m3);
+    sphere left2 = Sphere(Point3(-1.0, 0.0, -1.0), -0.4, m3);
 
-    material m4 = Material(Color(0.8, 0.6, 0.2), true, 1.0);
+    material m4 = Material(Color(0.8, 0.6, 0.2), true, 0.0, false, 0.0);
     sphere right = Sphere(Point3(1.0, 0.0, -1.0), 0.5, m4);
 
 
-    sphere spheres [] = {ground, center, left, right};
-    size_t spheres_len = 4;
+    sphere spheres [] = {ground, center, left1, left2, right};
+    size_t spheres_len = 5;
 
     // Render
 

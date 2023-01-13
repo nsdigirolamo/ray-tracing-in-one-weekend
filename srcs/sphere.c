@@ -10,6 +10,7 @@
 
 #include <math.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 sphere Sphere (point3 center, double radius, material mat) {
     sphere s;
@@ -52,8 +53,9 @@ bool findSphereHit (sphere s, ray r, double t_min, double t_max, hit *ray_hit) {
 
     ray_hit->t = root;
     ray_hit->point = getRayPoint(r, ray_hit->t);
-    ray_hit->normal = normal(sub(ray_hit->point, s.center));
     ray_hit->mat = s.mat;
+    vector3 outward_normal = scale(sub(ray_hit->point, s.center), 1.0 / s.radius);
+    setFaceNormal(ray_hit, r, outward_normal);
     return true;
 }
 

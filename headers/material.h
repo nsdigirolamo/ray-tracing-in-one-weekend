@@ -14,8 +14,10 @@ struct material {
     color albedo;
     bool isReflective;
     double reflectivity;
+    bool isRefractive;
+    double refractionIndex;
 } typedef material;
 
-material Material (color albedo, bool isReflective, double reflectivity);
+material Material (color albedo, bool isReflective, double reflectivity, bool isRefractive, double refractionIndex);
 
 #endif

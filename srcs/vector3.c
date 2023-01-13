@@ -79,8 +79,7 @@ vector3 reflect (vector3 v, vector3 normal) {
 }
 
 vector3 refract (vector3 v, vector3 normal, double refraction_index) {
-    v = scale(v, -1.0);
-    double cos_theta = fmin(dot(v, normal), 1.0);
+    double cos_theta = fmin(dot(scale(v, -1.0), normal), 1.0);
     vector3 r_out_perp = scale(add(v, scale(normal, cos_theta)), refraction_index);
     vector3 r_out_parallel = scale(normal, -sqrt(fabs(1.0 - magSquared(r_out_perp))));
     return add(r_out_perp, r_out_parallel);
