@@ -1,7 +1,6 @@
 # Nick's Ray Tracing in One Weekend
 A ray tracer written in C following the [Ray Tracing in One Weekend](https://raytracing.github.io/) 
-book series. I made this to help me learn a bunch of things: C, Makefiles, git, 
-raytracing, and getting more comfortable on the command line. 
+book series. It's not a great ray tracer, but at least it's mine.
 
 ## Below are output images as my work on the ray tracer progresses.
 
