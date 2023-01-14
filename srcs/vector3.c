@@ -88,3 +88,11 @@ vector3 refract (vector3 v, vector3 normal, double refraction_index) {
 vector3 randVector (double min, double max) {
     return Vector3(randDouble(min, max), randDouble(min, max), randDouble(min, max));
 }
+
+vector3 randInUnitDisk () {
+    while (true) {
+        vector3 v = Vector3(randDouble(-1, 1), randDouble(-1, 1), 0);
+        if (magSquared(v) >= 1) continue;
+        return v;
+    }
+}

@@ -31,5 +31,6 @@ vector3 reflect (vector3 v, vector3 normal);
 vector3 refract (vector3 v, vector3 normal, double refraction_index);
 
 vector3 randVector (double min, double max);
+vector3 randInUnitDisk ();
 
 #endif
