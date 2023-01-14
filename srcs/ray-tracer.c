@@ -67,10 +67,16 @@ int main () {
     const int image_height = 1080;
     const int samples_per_pixel = 100;
     const int max_depth = 50;
-    double vfov = 90.0;
-    double aspect_ratio = (double)image_width / image_height;
+    
+    // Camera
 
-    camera cam = Camera(vfov, aspect_ratio);
+    point3 lookfrom = Point3(-2, 2, 1);
+    point3 lookat = Point3(0, 0, -1);
+    vector3 vup = Vector3(0, 1, 0);
+    double vfov = 20.0;
+    double aspect_ratio = (double)image_width / image_height;
+    
+    camera cam = Camera(lookfrom, lookat, vup, vfov, aspect_ratio);
 
     // Spheres
 

@@ -13,14 +13,13 @@
 struct camera {
     double viewport_height;
     double viewport_width;
-    double focal_length;
     point3 origin;
     vector3 horizontal;
     vector3 vertical;
     point3 lower_left_corner;
 } typedef camera;
 
-camera Camera (double vfov, double aspect_ratio);
+camera Camera (point3 look_from, point3 look_at, vector3 view_up, double vertical_fov, double aspect_ratio);
 
 ray getCameraRay (camera c, double h_scale, double v_scale);
 

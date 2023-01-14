@@ -7,19 +7,24 @@
 
 #include <math.h>
 
-camera Camera (double vfov, double aspect_ratio) {
-    double theta = vfov * (M_PI / 180.0);
+camera Camera (point3 look_from, point3 look_at, vector3 view_up, double vertical_fov, double aspect_ratio) {
+    double theta = vertical_fov * (M_PI / 180.0);
     double h = tan(theta / 2.0);
     camera c;
     c.viewport_height = 2.0 * h;
     c.viewport_width = aspect_ratio * c.viewport_height;
-    c.focal_length = 1.0;
-    c.origin = Point3(0.0, 0.0, 0.0);
-    c.horizontal = Vector3(c.viewport_width, 0.0, 0.0);
-    c.vertical = Vector3(0.0, c.viewport_height, 0.0);
+
+    vector3 w = normal(sub(look_from, look_at));
+    vector3 u = normal(cross(view_up, w));
+    vector3 v = cross(w, u);
+
+    c.origin = look_from;
+    c.horizontal = scale(u, c.viewport_width);
+    c.vertical = scale(v, c.viewport_height);
+    
     c.lower_left_corner = sub(c.origin, scale(c.horizontal, 0.5));
     c.lower_left_corner = sub(c.lower_left_corner, scale(c.vertical, 0.5));
-    c.lower_left_corner = sub(c.lower_left_corner, Vector3(0.0, 0.0, c.focal_length));
+    c.lower_left_corner = sub(c.lower_left_corner, w);
     return c;
 }
 
