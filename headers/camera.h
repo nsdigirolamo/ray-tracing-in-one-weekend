@@ -11,7 +11,6 @@
 #include "ray.h"
 
 struct camera {
-    double aspect_ratio;
     double viewport_height;
     double viewport_width;
     double focal_length;
@@ -21,7 +20,7 @@ struct camera {
     point3 lower_left_corner;
 } typedef camera;
 
-camera Camera (double aspect_ratio, double viewport_height, double focal_length, point3 origin);
+camera Camera (double vfov, double aspect_ratio);
 
 ray getCameraRay (camera c, double h_scale, double v_scale);
 

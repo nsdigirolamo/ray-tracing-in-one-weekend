@@ -5,19 +5,21 @@
 
 #include "camera.h"
 
-camera Camera (double aspect_ratio, double viewport_height, double focal_length, point3 origin) {
+#include <math.h>
+
+camera Camera (double vfov, double aspect_ratio) {
+    double theta = vfov * (M_PI / 180.0);
+    double h = tan(theta / 2.0);
     camera c;
-    c.aspect_ratio = aspect_ratio;
-    c.viewport_height = viewport_height;
-    c.viewport_width = aspect_ratio * viewport_height;
-    c.focal_length = focal_length;
-    c.origin = origin;
-    c.horizontal = Vector3(c.viewport_width, 0, 0);
-    c.vertical = Vector3(0, c.viewport_height, 0);
-    point3 lower_left_corner = sub(origin, scale(c.horizontal, 0.5));
-    lower_left_corner = sub(lower_left_corner, scale(c.vertical, 0.5));
-    lower_left_corner = sub(lower_left_corner, Vector3(0, 0, c.focal_length));
-    c.lower_left_corner = lower_left_corner;
+    c.viewport_height = 2.0 * h;
+    c.viewport_width = aspect_ratio * c.viewport_height;
+    c.focal_length = 1.0;
+    c.origin = Point3(0.0, 0.0, 0.0);
+    c.horizontal = Vector3(c.viewport_width, 0.0, 0.0);
+    c.vertical = Vector3(0.0, c.viewport_height, 0.0);
+    c.lower_left_corner = sub(c.origin, scale(c.horizontal, 0.5));
+    c.lower_left_corner = sub(c.lower_left_corner, scale(c.vertical, 0.5));
+    c.lower_left_corner = sub(c.lower_left_corner, Vector3(0.0, 0.0, c.focal_length));
     return c;
 }
 
