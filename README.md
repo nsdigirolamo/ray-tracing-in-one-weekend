@@ -1,6 +1,8 @@
 # Nick's Ray Tracing in One Weekend
 A ray tracer written in C following the [Ray Tracing in One Weekend](https://raytracing.github.io/) 
-book series. Below are output images as my work on the ray tracer progresses.
+book series. This project only follows the first book, and if I end up following
+the next two books I'll probably re-write it in a language that I'm a bit better
+in.
 
 ![An image of a sphere with colored normals.](https://i.imgur.com/Pig4R4y.png)
 
