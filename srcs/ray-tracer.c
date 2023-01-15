@@ -65,37 +65,71 @@ int main () {
 
     const int image_width = 1920;
     const int image_height = 1080;
-    const int samples_per_pixel = 100;
+    const int samples_per_pixel = 500;
     const int max_depth = 50;
     
     // Camera
 
-    point3 lookfrom = Point3(-2, 2, 1);
-    point3 lookat = Point3(0, 0, -1);
+    point3 lookfrom = Point3(13, 2, 3);
+    point3 lookat = Point3(0, 0, 0);
     vector3 vup = Vector3(0, 1, 0);
     double vfov = 20.0;
     double aspect_ratio = (double)image_width / image_height;
+    double dist_to_focus = 10.0;
+    double aperture = 0.1;
     
-    camera cam = Camera(lookfrom, lookat, vup, vfov, aspect_ratio);
+    camera cam = Camera(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus);
 
     // Spheres
 
-    material m1 = Material(Color(0.1, 0.2, 0.5), false, 0.0, false, 1.5);
-    sphere center = Sphere(Point3(0.0, 0.0, -1.0), 0.5, m1);
+    size_t spheres_len = 900;
+    sphere spheres [spheres_len];
 
-    material m2 = Material(Color(0.8, 0.8, 0.0), false, 0.0, false, 0.0);
-    sphere ground = Sphere(Point3(0.0, -100.5, -1.0), 100, m2);
+    material ground_mat = Material(Color(0.5, 0.5, 0.5), false, 0.0, false, 0.0);
+    sphere ground = Sphere(Point3(0.0, -1000, -1.0), 1000, ground_mat);
 
-    material m3 = Material(Color(0.8, 0.8, 0.8), false, 0.0, true, 1.5);
-    sphere left1 = Sphere(Point3(-1.0, 0.0, -1.0), 0.5, m3);
-    sphere left2 = Sphere(Point3(-1.0, 0.0, -1.0), -0.4, m3);
+    material glass = Material(Color(1, 1, 1), false, 0.0, true, 1.5);
+    sphere g = Sphere(Point3(0, 1, 0), 1.0, glass);
 
-    material m4 = Material(Color(0.8, 0.6, 0.2), true, 0.0, false, 0.0);
-    sphere right = Sphere(Point3(1.0, 0.0, -1.0), 0.5, m4);
+    material lambertian = Material(Color(0.4, 0.2, 0.1), false, 0.0, false, 0.0);
+    sphere l = Sphere(Point3(-4, 1, 0), 1.0, lambertian);
 
+    material metal = Material(Color(0.7, 0.6, 0.5), true, 0.0, false, 0.0);
+    sphere m = Sphere(Point3(4, 1, 0), 1.0, metal);
 
-    sphere spheres [] = {ground, center, left1, left2, right};
-    size_t spheres_len = 5;
+    spheres[0] = ground;
+    spheres[1] = g;
+    spheres[2] = l;
+    spheres[3] = m;
+
+    int x = -15;
+    int z = -15;
+
+    for (int i = 4; i < spheres_len; i++) {
+
+        double choose_mat = randDouble(0, 1);
+        point3 center = Point3(x, 0.2, z);
+        color clr = Color(randDouble(0, 1), randDouble(0, 1), randDouble(0, 1));
+
+        if (15 <= z) {
+            z = -15;
+            x++;
+        }
+
+        z++;
+
+        material m;
+
+        if (choose_mat < 0.5) {
+            m = Material(clr, false, 0.0, false, 0.0);
+        } else if (choose_mat < 0.75) {
+            m = Material(clr, true, randDouble(0, 1), false, 0.0);
+        } else {
+            m = Material(clr, false, 0.0, true, randDouble(1, 2));
+        }
+
+        spheres[i] = Sphere(center, 0.2, m);
+    }
 
     // Render
 
