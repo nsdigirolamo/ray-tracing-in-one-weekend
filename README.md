@@ -16,8 +16,9 @@ in.
 
 ![A zoomed-in image of multiple colored spheres. The sphere on the left is made of glass](https://i.imgur.com/FMt7cMx.png)
 
-This final image took an embarassing 20 hours and 13 minutes to render. In this
-scene I used a higher pixel sample rate and included more objects. Also the ray
-tracer is just not very optimized, so it takes a very long time.
+This final image took an embarassing 20 hours and 13 minutes to render. In this scene 
+I used a higher pixel sample rate than the other images and included more objects. 
+It's also all done on the CPU and is not parallelized, so that could be another factor
+in why it took so long.
 
 ![An image of three large spheres surrounded by many smaller spheres.](https://i.imgur.com/9rPgdEo.png)
