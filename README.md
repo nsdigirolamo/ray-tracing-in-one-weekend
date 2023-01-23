@@ -1,4 +1,6 @@
 # Nick's Ray Tracing in One Weekend
+Note: I'm doing a more series attempt of this book series [here](https://github.com/nsdigirolamo/nicks-ray-tracer).
+
 A ray tracer written in C following the [Ray Tracing in One Weekend](https://raytracing.github.io/) 
 book series. This project only follows the first book, and if I end up following
 the next two books I'll probably re-write it in a language that I'm a bit better
